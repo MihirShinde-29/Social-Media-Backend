@@ -30,7 +30,7 @@ exports.createPost = async (req, res) => {
         if(req.file) {
           req.body.userPic = user.profilePicture;
           req.body.user = user.username;
-          const dir = __dirname.split('\\').slice(0, -1).join('/') + '/uploads/' + req.file.filename
+          const dir = path.resolve(__dirname, '..', "uploads") + '/' + req.file.filename
           var final_img = {
             contentType: req.file.mimetype,
             data: fs.readFileSync(dir)
