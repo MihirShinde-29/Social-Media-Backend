@@ -36,7 +36,7 @@ exports.createPost = async (req, res) => {
             data: fs.readFileSync(dir)
           };
           req.body.img = final_img
-          req.body.link = req.file.destination + '/' + req.file.filename
+          req.body.link = '/uploads/' + req.file.filename
           const newPost = new Post(req.body);
           newPost.save((err, post) => {
             if(err) {
