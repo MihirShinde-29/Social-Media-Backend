@@ -1,9 +1,10 @@
 const multer = require("multer");
+const path = require("path");
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        // console.log(__dirname.split('\\').slice(0, -1).join('/') + '/uploads/')
-        cb(null, 'https://ig-clone.onrender.com' + '/uploads/');
+        console.log(path.resolve(__dirname, '..', "uploads"))
+        cb(null, path.resolve(__dirname, '..', "uploads"));
     },
     filename: (req, file, cb) => {
         cb(null, new Date().getTime() + '-' + file.originalname);
