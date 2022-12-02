@@ -14,7 +14,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 connectDB();
-app.use('./uploads', express.static(path.join(__dirname, "uploads")));
+app.use('uploads', express.static(path.join(__dirname, "uploads")));
 app.use("/api/user", userRoute);
 app.use("/api/post", postRoute);
 app.use("/api/comment", commentRoute);
