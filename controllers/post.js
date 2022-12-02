@@ -11,7 +11,7 @@ exports.createPost = async (req, res) => {
     if (err) {
       res.status(500).send({
         success: false,
-        message: err,
+        message: 'multer error',
       });
     } else {
       User.findOne({ username: req.userId }, (err, user) => {
