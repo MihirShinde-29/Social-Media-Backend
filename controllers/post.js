@@ -6,7 +6,7 @@ const fs = require("fs");
 const path = require("path");
 
 exports.createPost = async (req, res) => {
-  upload(req, res, async (err) => {
+  upload(req, res, err => {
     console.log(req.file);
     if (err) {
       res.status(500).send({
