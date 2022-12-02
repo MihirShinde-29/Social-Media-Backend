@@ -68,13 +68,13 @@ exports.updatePost = async (req, res) => {
     Post.findById(req.params.id)
       .then((post) => {
         if (req.file) {
-          const dir = __dirname.split('\\').slice(0, -1).join('/') + '/uploads/' + req.file.filename
+          const dir = path.resolve(__dirname, '..', "uploads") + '/' + req.file.filename
           var final_img = {
             contentType: req.file.mimetype,
-            data: fs.readFileSync(dir
-          )};
+            data: fs.readFileSync(dir)
+          };
           req.body.img = final_img
-          req.body.link = req.file.destination + '/' + req.file.filename
+          req.body.link = '/uploads/' + req.file.filename
         }
         if (req.userId === post.user.toString()) {
           Post.updateOne({ $set: req.body })
