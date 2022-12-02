@@ -2,6 +2,7 @@ const multer = require("multer");
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
+        console.log(__dirname.split('\\').slice(0, -1).join('/') + '/uploads/')
         cb(null, __dirname.split('\\').slice(0, -1).join('/') + '/uploads/');
     },
     filename: (req, file, cb) => {
