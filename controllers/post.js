@@ -99,7 +99,7 @@ exports.deletePost = async (req, res) => {
       .then(post => {
         if (req.userId === post.user.toString()) {
           if(post.comments.length > 0) {
-            Comment.deleteMany({ user: req.userId })
+            Comment.deleteMany({ user: {username: req.userId} })
               .then(() => {
                 Post.findByIdAndDelete(req.params.id)
                   .then(() => {
